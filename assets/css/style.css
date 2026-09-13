@@ -1,0 +1,302 @@
+/* ==========================================================================
+   Visual design for an academic personal site.
+   Set in Literata throughout; ink-on-paper palette; single reading column.
+   Colours live in the :root block below if you ever want to change them.
+   ========================================================================== */
+
+:root {
+  --paper:     #FDFCF9;
+  --ink:       #141B2D;
+  --ink-soft:  #545E73;
+  --rule:      #DEDAD0;
+  --accent:    #2F4B8F;
+  --measure:   66ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:    #14161C;
+    --ink:      #E8E6E0;
+    --ink-soft: #9AA0AE;
+    --rule:     #2E323C;
+    --accent:   #9DB4E8;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 1.0625rem;
+  line-height: 1.68;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+/* --------------------------------------------------------------- structure */
+
+.wrap {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+@media (min-width: 60rem) {
+  .wrap {
+    display: grid;
+    grid-template-columns: 13rem minmax(0, var(--measure));
+    gap: 0 5.5rem;
+    padding: 5.5rem 3rem 7rem;
+  }
+}
+
+main { min-width: 0; }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+.skip:focus {
+  left: 1rem; top: 1rem;
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+}
+
+/* ---------------------------------------------------------------- masthead */
+
+.masthead {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+@media (min-width: 60rem) {
+  .masthead {
+    position: sticky;
+    top: 5.5rem;
+    align-self: start;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.masthead-name {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.25;
+}
+
+.masthead-name a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.masthead-role {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.nav {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+
+.nav li { margin: 0 0 0.45rem; }
+
+.nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.nav a:hover { color: var(--accent); }
+
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 500;
+  border-bottom-color: var(--accent);
+}
+
+.nav-external {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+
+/* ------------------------------------------------------------------- prose */
+
+h1, h2, h3 {
+  letter-spacing: -0.011em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.page-title {
+  margin: 0 0 2.25rem;
+  font-size: 1.9rem;
+  font-weight: 500;
+}
+
+h2 {
+  margin: 3.25rem 0 0.9rem;
+  font-size: 1.22rem;
+  font-weight: 600;
+}
+
+h3 {
+  margin: 2.25rem 0 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+p { margin: 0 0 1.2rem; }
+
+a {
+  color: var(--ink);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover { color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+em { font-style: italic; }
+strong { font-weight: 600; }
+
+hr {
+  margin: 3rem 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+blockquote {
+  margin: 1.75rem 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--rule);
+  color: var(--ink-soft);
+}
+
+ul, ol { padding-left: 1.35rem; }
+li { margin-bottom: 0.4rem; }
+
+code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --------------------------------------------------------- opening passage */
+
+.lede {
+  font-size: 1.2rem;
+  line-height: 1.55;
+  margin-bottom: 1.6rem;
+}
+
+.hero-name {
+  margin: 0 0 1.5rem;
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+/* The equation is the loudest thing on the page. Everything else stays quiet. */
+.equation {
+  margin: 3rem 0;
+  padding: 2.25rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow-x: auto;
+}
+
+.equation-note {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
+
+/* ------------------------------------------------------------- lists of work */
+
+.pub {
+  margin: 0 0 1.6rem;
+  padding-left: 0;
+}
+
+.pub-title { display: block; }
+
+.pub-meta {
+  display: block;
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+}
+
+.entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.entries > li {
+  margin: 0 0 1.9rem;
+}
+
+.entry-date {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.entry-title {
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.post-date {
+  margin: -1.5rem 0 2.25rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------------ footer */
+
+.footer {
+  margin-top: 6rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+}
+
+.footer p { margin: 0 0 0.3rem; }
+.footer a { color: var(--ink-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

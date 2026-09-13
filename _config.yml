@@ -1,0 +1,41 @@
+# ---------------------------------------------------------------------------
+# YOUR DETAILS — edit these, then everything on the site updates.
+# Keep the quotation marks. Leave a value as "" to hide it.
+# ---------------------------------------------------------------------------
+
+# While you are still writing, leave this as true and search engines will stay away.
+# Change it to false when the site is ready to be found.
+draft: true
+
+name: "Vinicius Nevoa"
+role: "Theoretical physicist"
+institution: "Your department, your university"
+email: "you@example.edu"
+
+# Profile links shown in the sidebar. Delete a line to hide that link.
+inspire: "https://inspirehep.net/authors/000000"
+arxiv: "https://arxiv.org/a/yourname_1"
+scholar: ""
+orcid: ""
+
+# The name of your CV file inside assets/files/ — or "" to hide the CV link.
+cv_file: "cv.pdf"
+
+# ---------------------------------------------------------------------------
+# TECHNICAL SETTINGS — you can ignore everything below this line.
+# ---------------------------------------------------------------------------
+
+title: "Vinicius Nevoa"
+description: "Vinicius Nevoa, theoretical physicist working on string theory."
+url: "https://viniciusnevoa.github.io"
+baseurl: ""
+
+permalink: /writing/:title/
+
+kramdown:
+  math_engine: null
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

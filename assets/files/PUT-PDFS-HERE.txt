@@ -1,0 +1,12 @@
+This folder is where PDFs go: your CV, lecture notes, slides, anything you want to
+link to from a page.
+
+Upload a file here and it becomes available at
+
+    /assets/files/whatever-you-named-it.pdf
+
+which is the address you link to from a page. The sidebar CV link expects a file
+called cv.pdf, unless you change the cv_file line in _config.yml.
+
+This text file exists only to make sure the folder itself gets created. Once you
+have put something real in here, you can delete it.

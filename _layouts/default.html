@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title and page.url != "/" %}{{ page.title }} · {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="author" content="{{ site.name }}">
+  {% if site.draft %}<meta name="robots" content="noindex, nofollow">{% endif %}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="masthead-name"><a href="{{ '/' | relative_url }}">{{ site.name }}</a></p>
+    {% if site.role %}<p class="masthead-role">{{ site.role }}</p>{% endif %}
+
+    <nav aria-label="Sections">
+      <ul class="nav">
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == "/" %}aria-current="page"{% endif %}>About</a></li>
+        <li><a href="{{ '/research/' | relative_url }}" {% if page.url contains "/research" %}aria-current="page"{% endif %}>Research</a></li>
+        <li><a href="{{ '/publications/' | relative_url }}" {% if page.url contains "/publications" %}aria-current="page"{% endif %}>Publications</a></li>
+        <li><a href="{{ '/teaching/' | relative_url }}" {% if page.url contains "/teaching" %}aria-current="page"{% endif %}>Teaching</a></li>
+        <li><a href="{{ '/writing/' | relative_url }}" {% if page.url contains "/writing" %}aria-current="page"{% endif %}>Writing</a></li>
+      </ul>
+    </nav>
+
+    <ul class="nav nav-external">
+      {% if site.cv_file and site.cv_file != "" %}<li><a href="{{ '/assets/files/' | append: site.cv_file | relative_url }}">Curriculum vitae</a></li>{% endif %}
+      {% if site.inspire and site.inspire != "" %}<li><a href="{{ site.inspire }}">INSPIRE</a></li>{% endif %}
+      {% if site.arxiv and site.arxiv != "" %}<li><a href="{{ site.arxiv }}">arXiv</a></li>{% endif %}
+      {% if site.scholar and site.scholar != "" %}<li><a href="{{ site.scholar }}">Google Scholar</a></li>{% endif %}
+      {% if site.orcid and site.orcid != "" %}<li><a href="{{ site.orcid }}">ORCID</a></li>{% endif %}
+    </ul>
+  </header>
+
+  <main id="main">
+    {% if page.url != "/" and page.title %}
+      <h1 class="page-title">{{ page.title }}</h1>
+    {% endif %}
+
+    {% if page.date %}
+      <p class="post-date">{{ page.date | date: "%-d %B %Y" }}</p>
+    {% endif %}
+
+    {{ content }}
+
+    <footer class="footer">
+      {% if site.institution and site.institution != "" %}<p>{{ site.institution }}</p>{% endif %}
+      {% if site.email and site.email != "" %}<p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>{% endif %}
+    </footer>
+  </main>
+
+</div>
+
+</body>
+</html>
